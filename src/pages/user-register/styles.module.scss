@@ -1,0 +1,79 @@
+@import "../../variables.scss";
+@import "../../globalStyles.scss";
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  background: linear-gradient(
+    360deg,
+    $overlay-initial-color,
+    $overlay-end-color
+  );
+  background: -webkit-linear-gradient(
+    360deg,
+    $overlay-initial-color,
+    $overlay-end-color
+  );
+  background: -moz-linear-gradient(
+    360deg,
+    $overlay-initial-color,
+    $overlay-end-color
+  );
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 550px;
+  width: 100%;
+  height: 100%;
+  padding: 48px 32px;
+
+  & .title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+}
+
+.formFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seeRegisteredUsers {
+  color: #000000;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 0.4;
+  }
+}
