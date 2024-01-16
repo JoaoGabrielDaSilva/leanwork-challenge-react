@@ -26,7 +26,7 @@ export const UserRegister = () => {
       <div className={styles.background}></div>
       <UserForm title="Lean Cadastro" onSubmit={onSubmit} />
       <Modal isVisible={isModalVisible}>
-        <p>
+        <p className={styles.modalText}>
           Já existe um usuário cadastrado com esse CPF, tente novamente com um
           diferente
         </p>

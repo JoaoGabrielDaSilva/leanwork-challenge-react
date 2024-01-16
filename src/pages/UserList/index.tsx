@@ -49,13 +49,17 @@ export const UserList = () => {
                   <td>{user.phone}</td>
                   <td>
                     <Link to={`/user-edit/${user.cpf}`}>
-                      <CiEdit className={styles.editIcon} />
+                      <CiEdit
+                        className={styles.editIcon}
+                        data-test-id={`edit-icon-cpf-${user.cpf}`}
+                      />
                     </Link>
                   </td>
                   <td>
                     <span
                       onClick={() => setSelectedUserForDeletion(user)}
                       className={styles.deleteButton}
+                      data-test-id={`delete-button-cpf-${user.cpf}`}
                     >
                       Excluir
                     </span>

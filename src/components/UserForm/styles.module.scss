@@ -37,3 +37,14 @@
 .submitButton {
   width: min-content !important;
 }
+
+@media (max-width: 920px) {
+  .submitButton {
+    width: 100% !important;
+  }
+
+  .formFooter {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
