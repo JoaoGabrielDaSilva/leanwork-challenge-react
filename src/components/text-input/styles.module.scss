@@ -1,0 +1,43 @@
+@import "../../variables.scss";
+@import "../../globalStyles.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 12px;
+  color: $input-label-color;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid $input-no-focus-border-color;
+  outline: none;
+  padding-bottom: 12px;
+  color: $input-focus-color;
+  font-size: 1rem;
+
+  &:active,
+  &:focus,
+  &:hover {
+    border-bottom-color: $input-focus-border-color;
+    cursor: pointer;
+  }
+}
+
+.inputError {
+  border-bottom-color: #d61010;
+
+  &:active,
+  &:focus,
+  &:hover {
+    border-bottom-color: #ff0000;
+  }
+}
+
+.error {
+  margin-top: 12px;
+  color: red;
+}
