@@ -1,0 +1,20 @@
+@import "../../variables.scss";
+@import "../../globalStyles.scss";
+
+.button {
+  display: flex;
+  align-self: flex-start;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+
+  background-color: $button-enabled-background-color;
+  color: $button-enabled-text-color;
+
+  cursor: pointer;
+
+  &:disabled {
+    background-color: $button-disabled-background-color;
+    color: $button-disabled-text-color;
+  }
+}
