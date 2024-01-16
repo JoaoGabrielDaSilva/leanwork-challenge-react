@@ -45,12 +45,19 @@
   );
 }
 
-.buttonContainer {
-  display: flex;
-  justify-content: center;
+.userNotFound {
+  margin: 24px;
 }
 
-.button {
-  width: min-content !important;
+.seeRegisteredUsers {
+  display: block;
   margin-top: 24px;
+
+  color: #000000;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 0.4;
+  }
 }

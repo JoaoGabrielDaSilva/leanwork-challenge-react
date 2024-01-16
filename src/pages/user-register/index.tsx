@@ -1,86 +1,44 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { string, z } from "zod";
-import { TextInput } from "../../components/text-input";
-import { validateCpf } from "../../utils/validateCpf";
-import styles from "./styles.module.scss";
-import { Button } from "../../components/button";
+import { useState } from "react";
+import { UserForm, UserFormData } from "../../components/UserForm";
 import { userService } from "../../services/userService";
-import { Link } from "react-router-dom";
-
-const formSchema = z.object({
-  name: string({ required_error: "O nome deve ser preenchido" }).min(3, {
-    message: "O nome deve ter pelo menos 3 caracteres",
-  }),
-  cpf: string({ required_error: "O CPF deve ser preenchido" }).refine(
-    validateCpf,
-    { message: "O CPF deve ser válido" }
-  ),
-  email: string({ required_error: "O e-mail deve ser preenchido" }).email({
-    message: "O e-mail deve ser válido",
-  }),
-  phone: string({ required_error: "O telefone deve ser preenchido" }).min(13, {
-    message: "O telefone deve ser válido",
-  }),
-});
-
-type FormData = z.infer<typeof formSchema>;
+import styles from "./styles.module.scss";
+import { Modal } from "../../components/modal";
+import { Button } from "../../components/button";
+import { useNavigate } from "react-router-dom";
 
 export const UserRegister = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { dirtyFields },
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      cpf: "",
-      email: "",
-      phone: "",
-    },
-  });
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate();
 
-  const buttonIsDisabled =
-    !dirtyFields?.cpf ||
-    !dirtyFields?.email ||
-    !dirtyFields?.name ||
-    !dirtyFields?.phone;
+  const onSubmit = (data: UserFormData) => {
+    const existingUser = userService.getUser(data.cpf);
 
-  const onSubmit = (data: FormData) => {
+    if (existingUser) {
+      return setIsModalVisible(true);
+    }
+
     userService.registerUser(data);
+    navigate("/user-list");
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.background}></div>
-      <form className={styles.form}>
-        <span className={styles.title}>Lean Cadastro</span>
-        <TextInput control={control} name="name" label="Nome" />
-        <TextInput
-          control={control}
-          name="cpf"
-          label="CPF"
-          inputMode="numeric"
-          mask="999.999.999-99"
-        />
-        <TextInput control={control} name="email" label="E-mail" />
-        <TextInput
-          control={control}
-          name="phone"
-          label="Telefone"
-          inputMode="numeric"
-          mask="99 99999-9999"
-        />
-        <div className={styles.formFooter}>
-          <Button onClick={handleSubmit(onSubmit)} disabled={buttonIsDisabled}>
-            Cadastrar
+      <UserForm title="Lean Cadastro" onSubmit={onSubmit} />
+      <Modal isVisible={isModalVisible}>
+        <p>
+          Já existe um usuário cadastrado com esse CPF, tente novamente com um
+          diferente
+        </p>
+        <div className={styles.buttonContainer}>
+          <Button
+            className={styles.button}
+            onClick={() => setIsModalVisible(false)}
+          >
+            OK
           </Button>
-          <Link to="user-list" className={styles.seeRegisteredUsers}>
-            Ver usuários cadastrados {"->"}
-          </Link>
         </div>
-      </form>
+      </Modal>
     </div>
   );
 };

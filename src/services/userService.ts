@@ -8,6 +8,11 @@ export const userService = {
     const parsedUsers = (rawUsers ? JSON.parse(rawUsers) : []) as User[];
     return parsedUsers;
   },
+  getUser: (cpf: string) => {
+    const users = userService.getUsers();
+
+    return users.find((user) => user.cpf === cpf);
+  },
   registerUser: (user: User) => {
     const users = userService.getUsers();
     localStorage.setItem(USER_LIST_KEY, JSON.stringify([...users, user]));
@@ -28,5 +33,6 @@ export const userService = {
     const users = userService.getUsers();
     const newUsers = users.filter((user) => user.cpf !== cpf);
     localStorage.setItem(USER_LIST_KEY, JSON.stringify(newUsers));
+    return newUsers;
   },
 };

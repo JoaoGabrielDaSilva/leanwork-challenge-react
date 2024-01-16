@@ -15,15 +15,21 @@
   border: none;
   border-bottom: 1px solid $input-no-focus-border-color;
   outline: none;
-  padding-bottom: 12px;
+  padding: 12px 0px;
   color: $input-focus-color;
   font-size: 1rem;
 
-  &:active,
-  &:focus,
-  &:hover {
-    border-bottom-color: $input-focus-border-color;
-    cursor: pointer;
+  &:disabled {
+    opacity: 0.7;
+  }
+
+  &:not(:disabled) {
+    &:active,
+    &:focus,
+    &:hover {
+      border-bottom-color: $input-focus-border-color;
+      cursor: pointer;
+    }
   }
 }
 
