@@ -23,3 +23,13 @@ Para fazer o build do projeto
 ```console
 yarn build
 ```
+
+Para executar os testes 
+```console
+npx playwright test
+```
+
+Para ver o relatório de testes
+```console
+npx playwright show-report
+```
