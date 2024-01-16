@@ -27,7 +27,7 @@ Para fazer o build do projeto
 yarn build
 ```
 
-Para executar os testes 
+Para executar os testes (O app deve estar sendo executado, caso contrario os testes não passarão)
 ```console
 npx playwright test
 ```
