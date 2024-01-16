@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { UserRegister } from "../pages/user-register";
-import { UserList } from "../pages/user-list";
-import { UserEdit } from "../pages/user-edit";
+import { UserRegister } from "../pages/UserRegister";
+import { UserList } from "../pages/UserList";
+import { UserEdit } from "../pages/UserEdit";
 
 export const Router = () => {
   return (

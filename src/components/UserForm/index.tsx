@@ -1,10 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { string, z } from "zod";
-import { TextInput } from "../../components/text-input";
+import { TextInput } from "../TextInput";
 import { validateCpf } from "../../utils/validateCpf";
 import styles from "./styles.module.scss";
-import { Button } from "../../components/button";
+import { Button } from "../Button";
 import { Link } from "react-router-dom";
 import { User } from "../../models/User";
 

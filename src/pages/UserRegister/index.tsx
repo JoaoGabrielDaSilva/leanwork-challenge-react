@@ -2,8 +2,8 @@ import { useState } from "react";
 import { UserForm, UserFormData } from "../../components/UserForm";
 import { userService } from "../../services/userService";
 import styles from "./styles.module.scss";
-import { Modal } from "../../components/modal";
-import { Button } from "../../components/button";
+import { Modal } from "../../components/Modal";
+import { Button } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 
 export const UserRegister = () => {

@@ -4,8 +4,8 @@ import { useState } from "react";
 import { User } from "../../models/User";
 import { userService } from "../../services/userService";
 import { CiEdit } from "react-icons/ci";
-import { Modal } from "../../components/modal";
-import { Button } from "../../components/button";
+import { Modal } from "../../components/Modal";
+import { Button } from "../../components/Button";
 
 export const UserList = () => {
   const [users, setUsers] = useState<User[]>(userService.getUsers());
